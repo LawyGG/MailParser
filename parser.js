@@ -74,9 +74,9 @@
 var parser = (function(){
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"letter":3,"dest":4,"SEP":5,"dir":6,"EOF":7,"WORD":8,"surnames":9,"dirtype":10,"CALLE":11,"VIA":12,"PASEO":13,"PLAZA":14,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"SEP",7:"EOF",8:"WORD",11:"CALLE",12:"VIA",13:"PASEO",14:"PLAZA"},
-productions_: [0,[3,4],[4,2],[9,2],[9,0],[6,2],[10,1],[10,1],[10,1],[10,1]],
+symbols_: {"error":2,"letter":3,"dest":4,"SEP":5,"EOF":6,"WORD":7,"surnames":8,"dir":9,"dirtype":10,"CALLE":11,"VIA":12,"PASEO":13,"PLAZA":14,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"SEP",6:"EOF",7:"WORD",11:"CALLE",12:"VIA",13:"PASEO",14:"PLAZA"},
+productions_: [0,[3,4],[4,2],[8,2],[8,0],[9,2],[10,1],[10,1],[10,1],[10,1]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -103,8 +103,8 @@ case 9:this.$ = 'PLAZA'
 break;
 }
 },
-table: [{3:1,4:2,8:[1,3]},{1:[3]},{5:[1,4]},{5:[2,4],8:[1,6],9:5},{6:7,10:8,11:[1,9],12:[1,10],13:[1,11],14:[1,12]},{5:[2,2]},{5:[2,4],7:[2,4],8:[1,6],9:13},{7:[1,14]},{7:[2,4],8:[1,6],9:15},{7:[2,6],8:[2,6]},{7:[2,7],8:[2,7]},{7:[2,8],8:[2,8]},{7:[2,9],8:[2,9]},{5:[2,3],7:[2,3]},{1:[2,1]},{7:[2,5]}],
-defaultActions: {5:[2,2],14:[2,1],15:[2,5]},
+table: [{3:1,4:2,7:[1,3]},{1:[3]},{5:[1,4]},{5:[2,4],6:[2,4],7:[1,6],8:5},{4:7,7:[1,3]},{5:[2,2],6:[2,2]},{5:[2,4],6:[2,4],7:[1,6],8:8},{6:[1,9]},{5:[2,3],6:[2,3]},{1:[2,1]}],
+defaultActions: {9:[2,1]},
 parseError: function parseError(str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -571,9 +571,9 @@ case 0:/* skip whitespace */
 break;
 case 1:return 'CP'
 break;
-case 2:return 8
+case 2:return 7
 break;
-case 3:return 7
+case 3:return 6
 break;
 case 4:return 5
 break;
