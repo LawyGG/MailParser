@@ -76,14 +76,14 @@ var parser = {trace: function trace() { },
 yy: {},
 symbols_: {"error":2,"letter":3,"dest":4,"SEP":5,"EOF":6,"WORD":7,"surnames":8,"dir":9,"dirtype":10,"CALLE":11,"VIA":12,"PASEO":13,"PLAZA":14,"$accept":0,"$end":1},
 terminals_: {2:"error",5:"SEP",6:"EOF",7:"WORD",11:"CALLE",12:"VIA",13:"PASEO",14:"PLAZA"},
-productions_: [0,[3,3],[4,2],[8,2],[8,0],[9,2],[10,1],[10,1],[10,1],[10,1]],
+productions_: [0,[3,4],[4,2],[8,2],[8,0],[9,2],[10,1],[10,1],[10,1],[10,1]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
 var $0 = $$.length - 1;
 switch (yystate) {
-case 1: typeof console !== 'undefined' ? console.log($$[$0-2]) : print($$[$0-2]);
-          return $$[$0-2]; 
+case 1: typeof console !== 'undefined' ? console.log($$[$0-3]) : print($$[$0-3]);
+          return $$[$0-3]; 
 break;
 case 2:this.$ = 'DESTINATARIO: ' + $$[$0-1] + ' ' + $$[$0]
 break;
@@ -103,8 +103,8 @@ case 9:this.$ = 'PLAZA'
 break;
 }
 },
-table: [{3:1,4:2,7:[1,3]},{1:[3]},{5:[1,4]},{5:[2,4],7:[1,6],8:5},{6:[1,7]},{5:[2,2]},{5:[2,4],7:[1,6],8:8},{1:[2,1]},{5:[2,3]}],
-defaultActions: {5:[2,2],7:[2,1],8:[2,3]},
+table: [{3:1,4:2,7:[1,3]},{1:[3]},{5:[1,4]},{5:[2,4],6:[2,4],7:[1,6],8:5},{4:7,7:[1,3]},{5:[2,2],6:[2,2]},{5:[2,4],6:[2,4],7:[1,6],8:8},{6:[1,9]},{5:[2,3],6:[2,3]},{1:[2,1]}],
+defaultActions: {9:[2,1]},
 parseError: function parseError(str, hash) {
     if (hash.recoverable) {
         this.trace(str);
