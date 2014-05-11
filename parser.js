@@ -85,6 +85,10 @@ switch (yystate) {
 case 1: typeof console !== 'undefined' ? console.log($$[$0-1]) : print($$[$0-1]);
           return $$[$0-1]; 
 break;
+case 2:this.$ = 'Destinatario: ' + $$[$0-1] + $$[$0]
+break;
+case 3:this.$ = $$[$0-1] + $$[$0]
+break;
 }
 },
 table: [{3:1,4:2,6:[1,3]},{1:[3]},{5:[1,4]},{5:[2,4],6:[1,6],7:5},{1:[2,1]},{5:[2,2]},{5:[2,4],6:[1,6],7:7},{5:[2,3]}],
