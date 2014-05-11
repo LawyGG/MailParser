@@ -22,19 +22,24 @@
 
 /lex
 
-%start letter
+%start init
 
 %left WORD
 %left CALLE VIA PASEO PLAZA
 
 %% /* language grammar */
 
-letter
-    : dest SEPNL dir EOF
+init
+    : letter
         { typeof console !== 'undefined' ? console.log($1) : print($1);
           return $1; }
     ;
 
+letter
+	:dest SEPNL dir EOF
+		{$$ = $1 + '\n' + $3 }
+	;
+	
 dest
     :words
 		{$$ = 'DESTINATARIO: ' + $1 }
@@ -44,22 +49,22 @@ words
 	: WORD words
 		{$$ = $1 + ' ' + $2}
 	| /* empty */
-		{$$ = ' '}
+		{$$ = ''}
 	;
 	
 dir
 	: dirstreet
-		{$$ = '\n DIRECCION: ' + $1}
+		{$$ = 'DIRECCION: ' + $1}
 	;
 	
 dirstreet
-	: CALLE words
-		{$$ = 'CALLE ' + $2}
-	| VIA words
-		{$$ = 'VIA ' + $2}
-	| PASEO words
-		{$$ = 'PASEO ' + $2}
-	| PLAZA words
-		{$$ = 'PLAZA ' + $2}
+	: CALLE WORD words
+		{$$ = 'CALLE ' + $2 + ' ' + $3}
+	| VIA WORD words
+		{$$ = 'VIA ' + $2 + ' ' + $3}
+	| PASEO WORD words
+		{$$ = 'PASEO ' + $2 + ' ' + $3}
+	| PLAZA WORD words
+		{$$ = 'PLAZA ' + $2 + ' ' + $3}
 	;
 
