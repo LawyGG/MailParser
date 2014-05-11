@@ -10,19 +10,14 @@ Optional fields indicates with *
 
 cp format: /^\d{5}$/
 
-* LETTER -> PERSON_NAME DIR LOCATION* CP
 
-* PERSONNAME -> NAME SURNAMES
+* *letter: dest dir location* CP*
+* *dest -> NAME SURNAMES*
+* *dir: street dirid B_NAME* FLOOR*
+* *dirid: DIR_NUMBER | EDF_NAME*
+* *location -> town...*
+* *CP -> cp localidad, provincia*
 
-* DIR -> DIRTYPE street_name DIR_NUMBER EDF_NAME B_NAME* FLOOR
-* EDF_NAME -> ('Edf.'|'Edificio')* b_name
-* DIR_NUMBER -> ('nº'|'Número')* number | 's/n'
-* B_NAME -> 'Portal' number|letter
-* FLOOR -> number 'º' ('Dcha|Izq|Derecha|Izquierda|letter')*
-* LOCATION -> town...
-* CP -> cp localidad, provincia
-
-* DIRTYPE
 
 ##Author
 
