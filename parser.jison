@@ -25,12 +25,13 @@ letter
 
 dest
     : WORD surnames
-		{$$ = 'Destinatario: ' + $1 + $2}
+		{$$ = 'Destinatario: ' + $1 + ' ' + $2}
     ;
 	
 surnames
 	: WORD surnames
-		{$$ = $1 + $2}
+		{$$ = $1 + ' ' + $2}
 	| /* empty */
+		{$$ = '\n'}
 	;
 
