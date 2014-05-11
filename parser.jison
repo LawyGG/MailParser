@@ -37,7 +37,7 @@ init
 
 letter
 	:dest SEPNL dir EOF
-		{$$ = $1 + '\n' + $3 }
+		{$$ = $1 + '\\n' + $3 }
 	;
 	
 dest
@@ -54,7 +54,7 @@ words
 	
 dir
 	: dirstreet
-		{$$ = 'DIRECCION: ' + $1}
+		{$$ = 'DIRECCION: ' + '\\t\\n' + $1}
 	;
 	
 dirstreet
