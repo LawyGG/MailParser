@@ -74,27 +74,27 @@
 var parser = (function(){
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"letter":3,"dest":4,"EOF":5,"WORD":6,"surnames":7,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",6:"WORD"},
-productions_: [0,[3,2],[4,2],[7,2],[7,0]],
+symbols_: {"error":2,"letter":3,"dest":4,"\\n":5,"dir":6,"EOF":7,"WORD":8,"surnames":9,"dirtype":10,"CALLE":11,"VIA":12,"PASEO":13,"PLAZA":14,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"\\n",7:"EOF",8:"WORD",11:"CALLE",12:"VIA",13:"PASEO",14:"PLAZA"},
+productions_: [0,[3,4],[4,2],[9,2],[9,0],[6,2],[10,1],[10,1],[10,1],[10,1]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
 var $0 = $$.length - 1;
 switch (yystate) {
-case 1: typeof console !== 'undefined' ? console.log($$[$0-1]) : print($$[$0-1]);
-          return $$[$0-1]; 
+case 1: typeof console !== 'undefined' ? console.log($$[$0-3]) : print($$[$0-3]);
+          return $$[$0-3]; 
 break;
-case 2:this.$ = 'Destinatario: ' + $$[$0-1] + ' ' + $$[$0]
+case 2:this.$ = 'DESTINATARIO: ' + $$[$0-1] + ' ' + $$[$0]
 break;
 case 3:this.$ = $$[$0-1] + ' ' + $$[$0]
 break;
-case 4:this.$ = '\n'
+case 4:this.$ = ''
 break;
 }
 },
-table: [{3:1,4:2,6:[1,3]},{1:[3]},{5:[1,4]},{5:[2,4],6:[1,6],7:5},{1:[2,1]},{5:[2,2]},{5:[2,4],6:[1,6],7:7},{5:[2,3]}],
-defaultActions: {4:[2,1],5:[2,2],7:[2,3]},
+table: [{3:1,4:2,8:[1,3]},{1:[3]},{5:[1,4]},{5:[2,4],8:[1,6],9:5},{6:7,10:8,11:[1,9],12:[1,10],13:[1,11],14:[1,12]},{5:[2,2]},{5:[2,4],7:[2,4],8:[1,6],9:13},{7:[1,14]},{7:[2,4],8:[1,6],9:15},{7:[2,6],8:[2,6]},{7:[2,7],8:[2,7]},{7:[2,8],8:[2,8]},{7:[2,9],8:[2,9]},{5:[2,3],7:[2,3]},{1:[2,1]},{7:[2,5]}],
+defaultActions: {5:[2,2],14:[2,1],15:[2,5]},
 parseError: function parseError(str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -561,16 +561,24 @@ case 0:/* skip whitespace */
 break;
 case 1:return 'CP'
 break;
-case 2:return 6
+case 2:return 8
 break;
-case 3:return 5
+case 3:return 7
 break;
-case 4:return 'INVALID'
+case 4:return CALLE
+break;
+case 5:return VIA
+break;
+case 6:return PASEO
+break;
+case 7:return PLAZA
+break;
+case 8:return 'INVALID'
 break;
 }
 },
-rules: [/^(?:\s+)/,/^(?:[0-9]{5}\b)/,/^(?:[A-Z][a-z]+\b)/,/^(?:$)/,/^(?:.)/],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4],"inclusive":true}}
+rules: [/^(?:\s+)/,/^(?:[0-9]{5}\b)/,/^(?:[A-Z][a-z]+\b)/,/^(?:$)/,/^(?:Calle|calle|C\/|c\/)/,/^(?:Vía|vía\b)/,/^(?:Paseo|paseo\b)/,/^(?:Plaza|plaza\|Plazoleta\|plazoleta\b)/,/^(?:.)/],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8],"inclusive":true}}
 };
 return lexer;
 })();
