@@ -9,6 +9,7 @@
 [0-9]{5}\b			 				return 'CP'
 [A-Z][a-z]+\b		  				return 'WORD'
 <<EOF>>               				return 'EOF'
+;									return 'SEP'
 
 'Calle'|'calle'|'C/'|'c/'		    return CALLE
 'Vía'|'vía'			  				return VIA
@@ -30,7 +31,7 @@
 %% /* language grammar */
 
 letter
-    : dest dir EOF
+    : dest SEP dir EOF
         { typeof console !== 'undefined' ? console.log($1) : print($1);
           return $1; }
     ;
@@ -49,12 +50,17 @@ surnames
 	
 dir
 	: dirtype surnames
+		{$$ = 'DIRECCION: ' + $1 + ' ' + $2}
 	;
 	
 dirtype 
 	: CALLE
+		{$$ = 'CALLE'}
 	| VIA
+		{$$ = 'VIA'}
 	| PASEO
+		{$$ = 'PASEO'}
 	| PLAZA
+		{$$ = 'PLAZA'}
 	;
 
