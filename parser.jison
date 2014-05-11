@@ -25,7 +25,7 @@
 %% /* language grammar */
 
 letter
-    : dest '\n'  dir EOF
+    : dest dir EOF
         { typeof console !== 'undefined' ? console.log($1) : print($1);
           return $1; }
     ;
