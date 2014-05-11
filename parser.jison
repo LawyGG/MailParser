@@ -9,7 +9,7 @@
 [0-9]{5}\b			 				return 'CP'
 [A-Z][a-z]+\b		  				return 'WORD'
 <<EOF>>               				return 'EOF'
-;									return 'SEP'
+[;]									return 'SEP'
 
 'Calle'|'calle'|'C/'|'c/'		    return CALLE
 'Vía'|'vía'			  				return VIA
@@ -21,18 +21,12 @@
 
 /lex
 
-/* CALLE, VIA, PLAZA, PASEO area WORDS so */
-
-%left WORD
-%right CALLE VIA PASEO PLAZA
-%left SEP
-
 %start letter
 
 %% /* language grammar */
 
 letter
-    : dest SEP dest EOF
+    : dest SEP EOF
         { typeof console !== 'undefined' ? console.log($1) : print($1);
           return $1; }
     ;
