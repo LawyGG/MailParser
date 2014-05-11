@@ -9,7 +9,8 @@
 [0-9]{5}\b			 				return 'CP'
 [A-Z][a-z]+\b		  				return 'WORD'
 <<EOF>>               				return 'EOF'
-[;]									return 'SEP'
+[;]									return 'SEPNL'
+[,]									return 'SEPDIR'
 
 'Calle'|'calle'|'C/'|'c/'		    return CALLE
 'Vía'|'vía'			  				return VIA
@@ -26,25 +27,25 @@
 %% /* language grammar */
 
 letter
-    : dest SEP dest EOF
+    : dest SEPNL dir EOF
         { typeof console !== 'undefined' ? console.log($1) : print($1);
           return $1; }
     ;
 
 dest
-    : WORD surnames
+    :words
 		{$$ = 'DESTINATARIO: ' + $1 + ' ' + $2}
     ;
 	
-surnames
-	: WORD surnames
+words
+	: WORD words
 		{$$ = $1 + ' ' + $2}
 	| /* empty */
 		{$$ = ''}
 	;
 	
 dir
-	: dirtype surnames
+	: dirtype words
 		{$$ = 'DIRECCION: ' + $1 + ' ' + $2}
 	;
 	
