@@ -23,15 +23,16 @@
 
 /* CALLE, VIA, PLAZA, PASEO area WORDS so */
 
-%right CALLE VIA PASEO PLAZA
 %left WORD
+%right CALLE VIA PASEO PLAZA
+%left SEP
 
 %start letter
 
 %% /* language grammar */
 
 letter
-    : dest SEP dir EOF
+    : dest SEP dest EOF
         { typeof console !== 'undefined' ? console.log($1) : print($1);
           return $1; }
     ;
