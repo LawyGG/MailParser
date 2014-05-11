@@ -6,17 +6,19 @@
 %%
 
 \s+                   				/* skip whitespace */
-[0-9]{5}\b			 				return 'CP'
-[A-Z][a-z]+\b		  				return 'WORD'
-<<EOF>>               				return 'EOF'
-[;]									return 'SEPNL'
-[,]									return 'SEPDIR'
+[0-9]{5}\b			 					return 'CP'
+<<EOF>>               					return 'EOF'
+[;]										return 'SEPNL'
+[,]										return 'SEPDIR'
 
-'Calle'|'calle'|'C/'|'c/'		    return CALLE
-'Vía'|'vía'			  				return VIA
-'Paseo'|'paseo'		  				return PASEO
-'Plaza'|'plaza|Plazoleta|plazoleta'	return PLAZA
-.                     				return 'INVALID'
+'Calle'|'calle'|'C/'|'c/'		    	return 'CALLE'
+'Vía'|'vía'			  					return 'VIA'
+'Paseo'|'paseo'		  					return 'PASEO'
+'Plaza'|'plaza'|'Plazoleta'|'plazoleta'	return 'PLAZA'
+
+[A-Z][a-z]+\b		  					return 'WORD'
+
+.                     					return 'INVALID'
 
 /lex
 
@@ -35,7 +37,7 @@ letter
 
 dest
     :words
-		{$$ = 'DESTINATARIO: ' + $1 + ' ' + $2}
+		{$$ = 'DESTINATARIO: ' + $1 }
     ;
 	
 words
@@ -46,18 +48,18 @@ words
 	;
 	
 dir
-	: dirtype words
-		{$$ = '\n DIRECCION: ' + $1 + ' ' + $2}
+	: dirstreet
+		{$$ = '\n DIRECCION: ' + $1}
 	;
 	
-dirtype 
-	: CALLE
-		{$$ = 'CALLE'}
-	| VIA
-		{$$ = 'VIA'}
-	| PASEO
-		{$$ = 'PASEO'}
-	| PLAZA
-		{$$ = 'PLAZA'}
+dirstreet
+	: CALLE words
+		{$$ = 'CALLE ' + $2}
+	| VIA words
+		{$$ = 'VIA ' + $2}
+	| PASEO words
+		{$$ = 'PASEO ' + $2}
+	| PLAZA words
+		{$$ = 'PLAZA ' + $2}
 	;
 
