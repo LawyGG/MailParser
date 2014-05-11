@@ -85,7 +85,7 @@ switch (yystate) {
 case 1: typeof console !== 'undefined' ? console.log($$[$0]) : print($$[$0]);
           return $$[$0]; 
 break;
-case 2:this.$ = $$[$0-3] + '\n' + $$[$0-1] 
+case 2:this.$ = $$[$0-3] + '\\n' + $$[$0-1] 
 break;
 case 3:this.$ = 'DESTINATARIO: ' + $$[$0] 
 break;
@@ -93,7 +93,7 @@ case 4:this.$ = $$[$0-1] + ' ' + $$[$0]
 break;
 case 5:this.$ = ''
 break;
-case 6:this.$ = 'DIRECCION: ' + $$[$0]
+case 6:this.$ = 'DIRECCION: ' + '\\t\\n' + $$[$0]
 break;
 case 7:this.$ = 'CALLE ' + $$[$0-1] + ' ' + $$[$0]
 break;
