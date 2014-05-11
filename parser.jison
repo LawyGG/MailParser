@@ -20,6 +20,11 @@
 
 /lex
 
+/* CALLE, VIA, PLAZA, PASEO area WORDS so */
+
+%right CALLE VIA PASEO PLAZA
+%left WORD
+
 %start letter
 
 %% /* language grammar */
