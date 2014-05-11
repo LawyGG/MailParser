@@ -74,37 +74,39 @@
 var parser = (function(){
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"letter":3,"dest":4,"SEPNL":5,"dir":6,"EOF":7,"words":8,"WORD":9,"dirstreet":10,"CALLE":11,"VIA":12,"PASEO":13,"PLAZA":14,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"SEPNL",7:"EOF",9:"WORD",11:"CALLE",12:"VIA",13:"PASEO",14:"PLAZA"},
-productions_: [0,[3,4],[4,1],[8,2],[8,0],[6,1],[10,2],[10,2],[10,2],[10,2]],
+symbols_: {"error":2,"init":3,"letter":4,"dest":5,"SEPNL":6,"dir":7,"EOF":8,"words":9,"WORD":10,"dirstreet":11,"CALLE":12,"VIA":13,"PASEO":14,"PLAZA":15,"$accept":0,"$end":1},
+terminals_: {2:"error",6:"SEPNL",8:"EOF",10:"WORD",12:"CALLE",13:"VIA",14:"PASEO",15:"PLAZA"},
+productions_: [0,[3,1],[4,4],[5,1],[9,2],[9,0],[7,1],[11,3],[11,3],[11,3],[11,3]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
 var $0 = $$.length - 1;
 switch (yystate) {
-case 1: typeof console !== 'undefined' ? console.log($$[$0-3]) : print($$[$0-3]);
-          return $$[$0-3]; 
+case 1: typeof console !== 'undefined' ? console.log($$[$0]) : print($$[$0]);
+          return $$[$0]; 
 break;
-case 2:this.$ = 'DESTINATARIO: ' + $$[$0] 
+case 2:this.$ = $$[$0-3] + '\n' + $$[$0-1] 
 break;
-case 3:this.$ = $$[$0-1] + ' ' + $$[$0]
+case 3:this.$ = 'DESTINATARIO: ' + $$[$0] 
 break;
-case 4:this.$ = ' '
+case 4:this.$ = $$[$0-1] + ' ' + $$[$0]
 break;
-case 5:this.$ = '\n DIRECCION: ' + $$[$0]
+case 5:this.$ = ''
 break;
-case 6:this.$ = 'CALLE ' + $$[$0]
+case 6:this.$ = 'DIRECCION: ' + $$[$0]
 break;
-case 7:this.$ = 'VIA ' + $$[$0]
+case 7:this.$ = 'CALLE ' + $$[$0-1] + ' ' + $$[$0]
 break;
-case 8:this.$ = 'PASEO ' + $$[$0]
+case 8:this.$ = 'VIA ' + $$[$0-1] + ' ' + $$[$0]
 break;
-case 9:this.$ = 'PLAZA ' + $$[$0]
+case 9:this.$ = 'PASEO ' + $$[$0-1] + ' ' + $$[$0]
+break;
+case 10:this.$ = 'PLAZA ' + $$[$0-1] + ' ' + $$[$0]
 break;
 }
 },
-table: [{3:1,4:2,5:[2,4],8:3,9:[1,4]},{1:[3]},{5:[1,5]},{5:[2,2]},{5:[2,4],7:[2,4],8:6,9:[1,4]},{6:7,10:8,11:[1,9],12:[1,10],13:[1,11],14:[1,12]},{5:[2,3],7:[2,3]},{7:[1,13]},{7:[2,5]},{7:[2,4],8:14,9:[1,4]},{7:[2,4],8:15,9:[1,4]},{7:[2,4],8:16,9:[1,4]},{7:[2,4],8:17,9:[1,4]},{1:[2,1]},{7:[2,6]},{7:[2,7]},{7:[2,8]},{7:[2,9]}],
-defaultActions: {3:[2,2],8:[2,5],13:[2,1],14:[2,6],15:[2,7],16:[2,8],17:[2,9]},
+table: [{3:1,4:2,5:3,6:[2,5],9:4,10:[1,5]},{1:[3]},{1:[2,1]},{6:[1,6]},{6:[2,3]},{6:[2,5],8:[2,5],9:7,10:[1,5]},{7:8,11:9,12:[1,10],13:[1,11],14:[1,12],15:[1,13]},{6:[2,4],8:[2,4]},{8:[1,14]},{8:[2,6]},{10:[1,15]},{10:[1,16]},{10:[1,17]},{10:[1,18]},{1:[2,2]},{8:[2,5],9:19,10:[1,5]},{8:[2,5],9:20,10:[1,5]},{8:[2,5],9:21,10:[1,5]},{8:[2,5],9:22,10:[1,5]},{8:[2,7]},{8:[2,8]},{8:[2,9]},{8:[2,10]}],
+defaultActions: {2:[2,1],4:[2,3],9:[2,6],14:[2,2],19:[2,7],20:[2,8],21:[2,9],22:[2,10]},
 parseError: function parseError(str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -571,21 +573,21 @@ case 0:/* skip whitespace */
 break;
 case 1:return 'CP'
 break;
-case 2:return 7
+case 2:return 8
 break;
-case 3:return 5
+case 3:return 6
 break;
 case 4:return 'SEPDIR'
 break;
-case 5:return 11
+case 5:return 12
 break;
-case 6:return 12
+case 6:return 13
 break;
-case 7:return 13
+case 7:return 14
 break;
-case 8:return 14
+case 8:return 15
 break;
-case 9:return 9
+case 9:return 10
 break;
 case 10:return 'INVALID'
 break;
