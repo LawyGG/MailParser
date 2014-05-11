@@ -26,7 +26,7 @@
 %% /* language grammar */
 
 letter
-    : dest SEP EOF
+    : dest SEP dest EOF
         { typeof console !== 'undefined' ? console.log($1) : print($1);
           return $1; }
     ;
