@@ -85,7 +85,7 @@ switch (yystate) {
 case 1: typeof console !== 'undefined' ? console.log($$[$0-3]) : print($$[$0-3]);
           return $$[$0-3]; 
 break;
-case 2:this.$ = 'DESTINATARIO: ' + $$[$0] + ' ' + $$[$01]
+case 2:this.$ = 'DESTINATARIO: ' + $$[$0] + ' ' + $$[$0]
 break;
 case 3:this.$ = $$[$0-1] + ' ' + $$[$0]
 break;

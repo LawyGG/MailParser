@@ -16,13 +16,14 @@
 'Vía'|'vía'			  				return VIA
 'Paseo'|'paseo'		  				return PASEO
 'Plaza'|'plaza|Plazoleta|plazoleta'	return PLAZA
-
-
 .                     				return 'INVALID'
 
 /lex
 
 %start letter
+
+%left WORD
+%left CALLE VIA PASEO PLAZA
 
 %% /* language grammar */
 
@@ -41,12 +42,12 @@ words
 	: WORD words
 		{$$ = $1 + ' ' + $2}
 	| /* empty */
-		{$$ = ''}
+		{$$ = ' '}
 	;
 	
 dir
 	: dirtype words
-		{$$ = 'DIRECCION: ' + $1 + ' ' + $2}
+		{$$ = '\n DIRECCION: ' + $1 + ' ' + $2}
 	;
 	
 dirtype 
