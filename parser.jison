@@ -59,7 +59,7 @@ words
 	;
 	
 dir
-	: dirstreet SEP dirid
+	: dirstreet SEPDIR dirid
 		{$$ = 'DIRECCION: ' + '\t\n' + $1 + '\t\n' + $3}
 	;
 	
