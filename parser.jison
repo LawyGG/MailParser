@@ -74,10 +74,10 @@ dirstreet
 		{$$ = 'PLAZA ' + $2 + ' ' + $3}
 	;
 
-dirid: EDF words
+dirid: EDF WORD words
 		{$$ = 'EDIFICIO ' + $2}
 	| NUM NUMBER
 		{$$ = 'NUMERO ' + $2}
-	| NUM NUMBER EDF words
+	| NUM NUMBER EDF WORD words
 		{$$ = 'NUMERO ' + $2 + '\t\n' + 'EDIFICIO ' + $4}
 	;
