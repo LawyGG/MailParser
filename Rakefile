@@ -1,4 +1,4 @@
-task :default => 'calculator.js'
-file %q{calculator.js} do
-  sh "jison calculator.jison -o calculator.js"
+task :default => 'parser.js'
+file %q{parser.js} do
+  sh "jison parser.jison -o parser.js"
 end
