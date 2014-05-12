@@ -11,9 +11,9 @@ Optional fields indicates with *
 cp format: /^\d{5}$/
 
 
-* *letter: dest dir location * CP*
+* _letter: dest dir location* CP_
 * *dest -> NAME SURNAMES*
-* *dir: street dirid B_NAME * FLOOR*
+* _dir: street dirid BNAME* FLOOR DOOR*_
 * *dirid: DIR_NUMBER | EDF_NAME*
 * *location -> town...*
 * *CP -> cp localidad, provincia*
