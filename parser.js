@@ -624,7 +624,7 @@ case 15:return 'INVALID'
 break;
 }
 },
-rules: [/^(?:\s+)/,/^(?:[0-9]{5}\b)/,/^(?:$)/,/^(?:[;])/,/^(?:[,])/,/^(?:Calle|calle|C\/|c\/)/,/^(?:Vía|vía\b)/,/^(?:Paseo|paseo\b)/,/^(?:Plaza|plaza|Plazoleta|plazoleta\b)/,/^(?:Edf\.|Edificio|edicifio|edf\.)/,/^(?:n\.|nº|número|Número|N\.|Nº)/,/^(?:Portal|portal|Bloque|bloque\b)/,/^(?:[A-Z]\b)/,/^(?:[A-Z][a-z]+\b)/,/^(?:[0-9]+\b)/,/^(?:.)/],
+rules: [/^(?:\s+)/,/^(?:[0-9]{5}\b)/,/^(?:$)/,/^(?:[;])/,/^(?:[,])/,/^(?:Calle|calle|C\/|c\/)/,/^(?:Vía|vía\b)/,/^(?:Paseo|paseo\b)/,/^(?:Plaza|plaza|Plazoleta|plazoleta\b)/,/^(?:Edf\.|Edificio|edicifio|edf\.)/,/^(?:n\.|nº|número|Número|N\.|Nº)/,/^(?:Portal|portal|Bloque|bloque\b)/,/^(?:[A-Z]\b)/,/^(?:[A-Za-z]+\b)/,/^(?:[0-9]+\b)/,/^(?:.)/],
 conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],"inclusive":true}}
 };
 return lexer;

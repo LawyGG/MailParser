@@ -22,7 +22,7 @@
 'Portal'|'portal'|'Bloque'|'bloque'							return 'PORTAL'
 
 [A-Z]\b		  							return 'LETTER'
-[A-Z][a-z]+\b		  					return 'WORD'
+[A-Za-z]+\b                             return 'WORD'
 [0-9]+\b								return 'NUMBER'
 
 .                     					return 'INVALID'
