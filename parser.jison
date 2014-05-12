@@ -6,7 +6,7 @@
 %%
 
 \s+                   				/* skip whitespace */
-^[0-9]{5}$			 					return 'CP'
+[0-9]{5}\b			 					return 'CP'
 <<EOF>>               					return 'EOF'
 
 [;]										return 'SEPNL'
@@ -43,7 +43,7 @@ init
     ;
 
 letter
-	:dest SEPNL dir EOF
+	:dest SEPNL dir cp EOF
 		{$$ = $1 + '\n' + $3 }
 	;
 	
@@ -90,3 +90,7 @@ block: PORTAL LETTER
 	| PORTAL NUMBER
 		{$$ = 'PORTAL ' + $2}
 	;
+
+cp: CP WORD words SEPDIR WORD words
+        {$$ = '\nCP: ' + $1 + '\nLOCALIDAD: ' + $2 + ' ' + $3 + '\nPROVINCIA: ' + $4 + ' ' + $5}
+    ;
