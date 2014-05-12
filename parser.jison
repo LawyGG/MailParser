@@ -60,11 +60,10 @@ words
 	;
 	
 dir
-	: dirstreet SEPDIR dirid
-		{$$ = 'DIRECCION: ' + '\t\n' + $1 + '\t\n' + $3}
-		
-	| dirstreet SEPDIR dirid SEPDIR block
+	: dirstreet SEPDIR dirid SEPDIR block
 		{$$ = 'DIRECCION: ' + '\t\n' + $1 + '\t\n' + $3 + '\t\n' + $5}
+    | dirstreet SEPDIR dirid
+		{$$ = 'DIRECCION: ' + '\t\n' + $1 + '\t\n' + $3}
 	;
 	
 dirstreet
