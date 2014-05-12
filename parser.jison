@@ -63,9 +63,9 @@ words
 	
 dir
 	: dirstreet SEPDIR dirid SEPDIR block
-		{$$ = 'DIRECCION: ' + '\t\n' + $1 + '\t\n' + $3 + '\t\n' + $5}
+		{$$ = 'DIRECCION: ' + '\n' + $1 + '\n' + $3 + '\n' + $5}
     | dirstreet SEPDIR dirid
-		{$$ = 'DIRECCION: ' + '\t\n' + $1 + '\t\n' + $3}
+		{$$ = 'DIRECCION: ' + '\n' + $1 + '\n' + $3}
 	;
 	
 dirstreet
@@ -84,7 +84,7 @@ dirid: EDF WORD words
 	| NUM NUMBER
 		{$$ = 'NUMERO ' + $2}
 	| NUM NUMBER EDF WORD words
-		{$$ = 'NUMERO ' + $2 + '\t\n' + 'EDIFICIO ' + $4}
+		{$$ = 'NUMERO ' + $2 + '\n' + 'EDIFICIO ' + $4}
 	;
 	
 block: PORTAL LETTER
@@ -98,5 +98,5 @@ locat: WORD words
     ;
 
 cp: CP WORD words SEPDIR WORD words
-        {$$ = '\nCP: ' + $1 + '\nLOCALIDAD: ' + $2 + ' ' + $3 + '\nPROVINCIA: ' + $4 + ' ' + $5}
+        {$$ = '/nCP: ' + $1 + '\nLOCALIDAD: ' + $2 + ' ' + $3 + '\nPROVINCIA: ' + $5 + ' ' + $6}
     ;

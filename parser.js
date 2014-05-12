@@ -95,9 +95,9 @@ case 5:this.$ = $$[$0-1] + ' ' + $$[$0]
 break;
 case 6:this.$ = ''
 break;
-case 7:this.$ = 'DIRECCION: ' + '\t\n' + $$[$0-4] + '\t\n' + $$[$0-2] + '\t\n' + $$[$0]
+case 7:this.$ = 'DIRECCION: ' + '\n' + $$[$0-4] + '\n' + $$[$0-2] + '\n' + $$[$0]
 break;
-case 8:this.$ = 'DIRECCION: ' + '\t\n' + $$[$0-2] + '\t\n' + $$[$0]
+case 8:this.$ = 'DIRECCION: ' + '\n' + $$[$0-2] + '\n' + $$[$0]
 break;
 case 9:this.$ = 'CALLE ' + $$[$0-1] + ' ' + $$[$0]
 break;
@@ -111,7 +111,7 @@ case 13:this.$ = 'EDIFICIO ' + $$[$0-1]
 break;
 case 14:this.$ = 'NUMERO ' + $$[$0]
 break;
-case 15:this.$ = 'NUMERO ' + $$[$0-3] + '\t\n' + 'EDIFICIO ' + $$[$0-1]
+case 15:this.$ = 'NUMERO ' + $$[$0-3] + '\n' + 'EDIFICIO ' + $$[$0-1]
 break;
 case 16:this.$ = 'PORTAL ' + $$[$0]
 break;
@@ -119,7 +119,7 @@ case 17:this.$ = 'PORTAL ' + $$[$0]
 break;
 case 18:this.$ = 'CIUDAD: ' + $$[$0-1] + ' ' + $$[$0]
 break;
-case 19:this.$ = '\nCP: ' + $$[$0-5] + '\nLOCALIDAD: ' + $$[$0-4] + ' ' + $$[$0-3] + '\nPROVINCIA: ' + $$[$0-2] + ' ' + $$[$0-1]
+case 19:this.$ = '/nCP: ' + $$[$0-5] + '\nLOCALIDAD: ' + $$[$0-4] + ' ' + $$[$0-3] + '\nPROVINCIA: ' + $$[$0-1] + ' ' + $$[$0]
 break;
 }
 },
