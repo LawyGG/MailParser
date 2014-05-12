@@ -43,8 +43,10 @@ init
     ;
 
 letter
-	:dest SEPNL dir cp EOF
-		{$$ = $1 + '\n' + $3 }
+	: dest SEPNL dir SEPNL locat SEPNL cp EOF
+		{$$ = $1 + '\n' + $3 + '\n' + $5 + $7}
+    | dest SEPNL dir SEPNL cp EOF
+		{$$ = $1 + '\n' + $3 + $5}
 	;
 	
 dest
@@ -90,6 +92,10 @@ block: PORTAL LETTER
 	| PORTAL NUMBER
 		{$$ = 'PORTAL ' + $2}
 	;
+
+locat: WORD words
+        {$$ = 'CIUDAD: ' + $1 + ' ' + $2}
+    ;
 
 cp: CP WORD words SEPDIR WORD words
         {$$ = '\nCP: ' + $1 + '\nLOCALIDAD: ' + $2 + ' ' + $3 + '\nPROVINCIA: ' + $4 + ' ' + $5}

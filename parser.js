@@ -74,9 +74,9 @@
 var parser = (function(){
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"init":3,"letter":4,"dest":5,"SEPNL":6,"dir":7,"EOF":8,"words":9,"WORD":10,"dirstreet":11,"SEPDIR":12,"dirid":13,"block":14,"CALLE":15,"VIA":16,"PASEO":17,"PLAZA":18,"EDF":19,"NUM":20,"NUMBER":21,"PORTAL":22,"LETTER":23,"$accept":0,"$end":1},
-terminals_: {2:"error",6:"SEPNL",8:"EOF",10:"WORD",12:"SEPDIR",15:"CALLE",16:"VIA",17:"PASEO",18:"PLAZA",19:"EDF",20:"NUM",21:"NUMBER",22:"PORTAL",23:"LETTER"},
-productions_: [0,[3,1],[4,4],[5,1],[9,2],[9,0],[7,3],[7,5],[11,3],[11,3],[11,3],[11,3],[13,3],[13,2],[13,5],[14,2],[14,2]],
+symbols_: {"error":2,"init":3,"letter":4,"dest":5,"SEPNL":6,"dir":7,"locat":8,"cp":9,"EOF":10,"words":11,"WORD":12,"dirstreet":13,"SEPDIR":14,"dirid":15,"block":16,"CALLE":17,"VIA":18,"PASEO":19,"PLAZA":20,"EDF":21,"NUM":22,"NUMBER":23,"PORTAL":24,"LETTER":25,"CP":26,"$accept":0,"$end":1},
+terminals_: {2:"error",6:"SEPNL",10:"EOF",12:"WORD",14:"SEPDIR",17:"CALLE",18:"VIA",19:"PASEO",20:"PLAZA",21:"EDF",22:"NUM",23:"NUMBER",24:"PORTAL",25:"LETTER",26:"CP"},
+productions_: [0,[3,1],[4,8],[4,6],[5,1],[11,2],[11,0],[7,5],[7,3],[13,3],[13,3],[13,3],[13,3],[15,3],[15,2],[15,5],[16,2],[16,2],[8,2],[9,6]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -85,40 +85,46 @@ switch (yystate) {
 case 1: typeof console !== 'undefined' ? console.log($$[$0]) : print($$[$0]);
           return $$[$0]; 
 break;
-case 2:this.$ = $$[$0-3] + '\n' + $$[$0-1] 
+case 2:this.$ = $$[$0-7] + '\n' + $$[$0-5] + '\n' + $$[$0-3] + $$[$0-1]
 break;
-case 3:this.$ = 'DESTINATARIO: ' + $$[$0] 
+case 3:this.$ = $$[$0-5] + '\n' + $$[$0-3] + $$[$0-1]
 break;
-case 4:this.$ = $$[$0-1] + ' ' + $$[$0]
+case 4:this.$ = 'DESTINATARIO: ' + $$[$0] 
 break;
-case 5:this.$ = ''
+case 5:this.$ = $$[$0-1] + ' ' + $$[$0]
 break;
-case 6:this.$ = 'DIRECCION: ' + '\t\n' + $$[$0-2] + '\t\n' + $$[$0]
+case 6:this.$ = ''
 break;
 case 7:this.$ = 'DIRECCION: ' + '\t\n' + $$[$0-4] + '\t\n' + $$[$0-2] + '\t\n' + $$[$0]
 break;
-case 8:this.$ = 'CALLE ' + $$[$0-1] + ' ' + $$[$0]
+case 8:this.$ = 'DIRECCION: ' + '\t\n' + $$[$0-2] + '\t\n' + $$[$0]
 break;
-case 9:this.$ = 'VIA ' + $$[$0-1] + ' ' + $$[$0]
+case 9:this.$ = 'CALLE ' + $$[$0-1] + ' ' + $$[$0]
 break;
-case 10:this.$ = 'PASEO ' + $$[$0-1] + ' ' + $$[$0]
+case 10:this.$ = 'VIA ' + $$[$0-1] + ' ' + $$[$0]
 break;
-case 11:this.$ = 'PLAZA ' + $$[$0-1] + ' ' + $$[$0]
+case 11:this.$ = 'PASEO ' + $$[$0-1] + ' ' + $$[$0]
 break;
-case 12:this.$ = 'EDIFICIO ' + $$[$0-1]
+case 12:this.$ = 'PLAZA ' + $$[$0-1] + ' ' + $$[$0]
 break;
-case 13:this.$ = 'NUMERO ' + $$[$0]
+case 13:this.$ = 'EDIFICIO ' + $$[$0-1]
 break;
-case 14:this.$ = 'NUMERO ' + $$[$0-3] + '\t\n' + 'EDIFICIO ' + $$[$0-1]
+case 14:this.$ = 'NUMERO ' + $$[$0]
 break;
-case 15:this.$ = 'PORTAL ' + $$[$0]
+case 15:this.$ = 'NUMERO ' + $$[$0-3] + '\t\n' + 'EDIFICIO ' + $$[$0-1]
 break;
 case 16:this.$ = 'PORTAL ' + $$[$0]
 break;
+case 17:this.$ = 'PORTAL ' + $$[$0]
+break;
+case 18:this.$ = 'CIUDAD: ' + $$[$0-1] + ' ' + $$[$0]
+break;
+case 19:this.$ = '\nCP: ' + $$[$0-5] + '\nLOCALIDAD: ' + $$[$0-4] + ' ' + $$[$0-3] + '\nPROVINCIA: ' + $$[$0-2] + ' ' + $$[$0-1]
+break;
 }
 },
-table: [{3:1,4:2,5:3,6:[2,5],9:4,10:[1,5]},{1:[3]},{1:[2,1]},{6:[1,6]},{6:[2,3]},{6:[2,5],8:[2,5],9:7,10:[1,5],12:[2,5]},{7:8,11:9,15:[1,10],16:[1,11],17:[1,12],18:[1,13]},{6:[2,4],8:[2,4],12:[2,4]},{8:[1,14]},{12:[1,15]},{10:[1,16]},{10:[1,17]},{10:[1,18]},{10:[1,19]},{1:[2,2]},{13:20,19:[1,21],20:[1,22]},{9:23,10:[1,5],12:[2,5]},{9:24,10:[1,5],12:[2,5]},{9:25,10:[1,5],12:[2,5]},{9:26,10:[1,5],12:[2,5]},{8:[2,6],12:[1,27]},{10:[1,28]},{21:[1,29]},{12:[2,8]},{12:[2,9]},{12:[2,10]},{12:[2,11]},{14:30,22:[1,31]},{8:[2,5],9:32,10:[1,5],12:[2,5]},{8:[2,13],12:[2,13],19:[1,33]},{8:[2,7]},{21:[1,35],23:[1,34]},{8:[2,12],12:[2,12]},{10:[1,36]},{8:[2,15]},{8:[2,16]},{8:[2,5],9:37,10:[1,5],12:[2,5]},{8:[2,14],12:[2,14]}],
-defaultActions: {2:[2,1],4:[2,3],14:[2,2],23:[2,8],24:[2,9],25:[2,10],26:[2,11],30:[2,7],34:[2,15],35:[2,16]},
+table: [{3:1,4:2,5:3,6:[2,6],11:4,12:[1,5]},{1:[3]},{1:[2,1]},{6:[1,6]},{6:[2,4]},{6:[2,6],10:[2,6],11:7,12:[1,5],14:[2,6]},{7:8,13:9,17:[1,10],18:[1,11],19:[1,12],20:[1,13]},{6:[2,5],10:[2,5],14:[2,5]},{6:[1,14]},{14:[1,15]},{12:[1,16]},{12:[1,17]},{12:[1,18]},{12:[1,19]},{8:20,9:21,12:[1,22],26:[1,23]},{15:24,21:[1,25],22:[1,26]},{11:27,12:[1,5],14:[2,6]},{11:28,12:[1,5],14:[2,6]},{11:29,12:[1,5],14:[2,6]},{11:30,12:[1,5],14:[2,6]},{6:[1,31]},{10:[1,32]},{6:[2,6],11:33,12:[1,5]},{12:[1,34]},{6:[2,8],14:[1,35]},{12:[1,36]},{23:[1,37]},{14:[2,9]},{14:[2,10]},{14:[2,11]},{14:[2,12]},{9:38,26:[1,23]},{1:[2,3]},{6:[2,18]},{11:39,12:[1,5],14:[2,6]},{16:40,24:[1,41]},{6:[2,6],11:42,12:[1,5],14:[2,6]},{6:[2,14],14:[2,14],21:[1,43]},{10:[1,44]},{14:[1,45]},{6:[2,7]},{23:[1,47],25:[1,46]},{6:[2,13],14:[2,13]},{12:[1,48]},{1:[2,2]},{12:[1,49]},{6:[2,16]},{6:[2,17]},{6:[2,6],11:50,12:[1,5],14:[2,6]},{10:[2,6],11:51,12:[1,5]},{6:[2,15],14:[2,15]},{10:[2,19]}],
+defaultActions: {2:[2,1],4:[2,4],27:[2,9],28:[2,10],29:[2,11],30:[2,12],32:[2,3],33:[2,18],40:[2,7],44:[2,2],46:[2,16],47:[2,17],51:[2,19]},
 parseError: function parseError(str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -586,39 +592,39 @@ var YYSTATE=YY_START;
 switch($avoiding_name_collisions) {
 case 0:/* skip whitespace */
 break;
-case 1:return 'CP'
+case 1:return 26
 break;
-case 2:return 8
+case 2:return 10
 break;
 case 3:return 6
 break;
-case 4:return 12
+case 4:return 14
 break;
-case 5:return 15
+case 5:return 17
 break;
-case 6:return 16
+case 6:return 18
 break;
-case 7:return 17
+case 7:return 19
 break;
-case 8:return 18
+case 8:return 20
 break;
-case 9:return 19
+case 9:return 21
 break;
-case 10:return 20
+case 10:return 22
 break;
-case 11:return 22
+case 11:return 24
 break;
-case 12:return 23
+case 12:return 25
 break;
-case 13:return 10
+case 13:return 12
 break;
-case 14:return 21
+case 14:return 23
 break;
 case 15:return 'INVALID'
 break;
 }
 },
-rules: [/^(?:\s+)/,/^(?:^[0-9]{5}$)/,/^(?:$)/,/^(?:[;])/,/^(?:[,])/,/^(?:Calle|calle|C\/|c\/)/,/^(?:Vía|vía\b)/,/^(?:Paseo|paseo\b)/,/^(?:Plaza|plaza|Plazoleta|plazoleta\b)/,/^(?:Edf\.|Edificio|edicifio|edf\.)/,/^(?:n\.|nº|número|Número|N\.|Nº)/,/^(?:Portal|portal|Bloque|bloque\b)/,/^(?:[A-Z]\b)/,/^(?:[A-Z][a-z]+\b)/,/^(?:[0-9]+\b)/,/^(?:.)/],
+rules: [/^(?:\s+)/,/^(?:[0-9]{5}\b)/,/^(?:$)/,/^(?:[;])/,/^(?:[,])/,/^(?:Calle|calle|C\/|c\/)/,/^(?:Vía|vía\b)/,/^(?:Paseo|paseo\b)/,/^(?:Plaza|plaza|Plazoleta|plazoleta\b)/,/^(?:Edf\.|Edificio|edicifio|edf\.)/,/^(?:n\.|nº|número|Número|N\.|Nº)/,/^(?:Portal|portal|Bloque|bloque\b)/,/^(?:[A-Z]\b)/,/^(?:[A-Z][a-z]+\b)/,/^(?:[0-9]+\b)/,/^(?:.)/],
 conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],"inclusive":true}}
 };
 return lexer;
