@@ -2,9 +2,11 @@ $(document).ready(function () {
   $("button").click(function () {
     try {
       var result = parser.parse($("input").val())
-      $("span").html(result);
+      $('#output').html(JSON.stringify(result,undefined,2));
     } catch (e) {
-      $("span").html(String(e));
+      
+      $('#output').html(String(e));
+
     }
   });
 });
