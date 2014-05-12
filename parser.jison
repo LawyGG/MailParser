@@ -6,21 +6,22 @@
 %%
 
 \s+                   				/* skip whitespace */
-[0-9]{5}\b			 					return 'CP'
+^[0-9]{5}$			 					return 'CP'
 <<EOF>>               					return 'EOF'
 
 [;]										return 'SEPNL'
 [,]										return 'SEPDIR'
 
-'Calle'|'calle'|'C/'|'c/'		    				return 'CALLE'
-'Vía'|'vía'			  								return 'VIA'
-'Paseo'|'paseo'		  								return 'PASEO'
-'Plaza'|'plaza'|'Plazoleta'|'plazoleta'				return 'PLAZA'
+'Calle'|'calle'|'C/'|'c/'		    						return 'CALLE'
+'Vía'|'vía'			  										return 'VIA'
+'Paseo'|'paseo'		  										return 'PASEO'
+'Plaza'|'plaza'|'Plazoleta'|'plazoleta'						return 'PLAZA'
 
-'Edf.'|'Edificio'|'edicifio'|'edf.'					return 'EDF'
-'n.'|'nº'|'número'|'Número'|'Edf.'|'N.'|'Nº'		return 'NUM'
-'Portal'|'portal'|'Bloque'|'Número'|'Edf.'|'N.'|'Nº'		return 'PORTAL'
+'Edf.'|'Edificio'|'edicifio'|'edf.'							return 'EDF'
+'n.'|'nº'|'número'|'Número'|'N.'|'Nº'						return 'NUM'
+'Portal'|'portal'|'Bloque'|'bloque'							return 'PORTAL'
 
+[A-Z]\b		  							return 'LETTER'
 [A-Z][a-z]+\b		  					return 'WORD'
 [0-9]+\b								return 'NUMBER'
 
@@ -61,6 +62,9 @@ words
 dir
 	: dirstreet SEPDIR dirid
 		{$$ = 'DIRECCION: ' + '\t\n' + $1 + '\t\n' + $3}
+		
+	| dirstreet SEPDIR dirid SEPDIR block
+		{$$ = 'DIRECCION: ' + '\t\n' + $1 + '\t\n' + $3 + '\t\n' + $5}
 	;
 	
 dirstreet
@@ -80,4 +84,10 @@ dirid: EDF WORD words
 		{$$ = 'NUMERO ' + $2}
 	| NUM NUMBER EDF WORD words
 		{$$ = 'NUMERO ' + $2 + '\t\n' + 'EDIFICIO ' + $4}
+	;
+	
+block: PORTAL LETTER
+		{$$ = 'PORTAL ' + $2}
+	| PORTAL NUMBER
+		{$$ = 'PORTAL ' + $2}
 	;
