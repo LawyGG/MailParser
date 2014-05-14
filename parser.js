@@ -85,9 +85,9 @@ switch (yystate) {
 case 1: typeof console !== 'undefined' ? console.log($$[$0]) : print($$[$0]);
           return $$[$0]; 
 break;
-case 2:this.$ = $$[$0-7] + '\n' + $$[$0-5] + '\n' + $$[$0-3] + $$[$0-1]
+case 2:this.$ = $$[$0-7] + "\n\n" + $$[$0-5] + "\n\n" + $$[$0-3] + "\n\n"+ $$[$0-1]
 break;
-case 3:this.$ = $$[$0-5] + '\n' + $$[$0-3] + $$[$0-1]
+case 3:this.$ = $$[$0-5] + "\n\n" + $$[$0-3] + "\n\n" + $$[$0-1]
 break;
 case 4:this.$ = 'DESTINATARIO: ' + $$[$0] 
 break;
@@ -95,9 +95,9 @@ case 5:this.$ = $$[$0-1] + ' ' + $$[$0]
 break;
 case 6:this.$ = ''
 break;
-case 7:this.$ = 'DIRECCION: ' + '\n' + $$[$0-4] + '\n' + $$[$0-2] + '\n' + $$[$0]
+case 7:this.$ = 'DIRECCION: ' + "\n\t" + $$[$0-4] + "\n\t" + $$[$0-2] + "\n\t" + $$[$0]
 break;
-case 8:this.$ = 'DIRECCION: ' + '\n' + $$[$0-2] + '\n' + $$[$0]
+case 8:this.$ = 'DIRECCION: ' + "\n\t" + $$[$0-2] + "\n\t" + $$[$0]
 break;
 case 9:this.$ = 'CALLE ' + $$[$0-1] + ' ' + $$[$0]
 break;
@@ -111,7 +111,7 @@ case 13:this.$ = 'EDIFICIO ' + $$[$0-1]
 break;
 case 14:this.$ = 'NUMERO ' + $$[$0]
 break;
-case 15:this.$ = 'NUMERO ' + $$[$0-3] + '\n' + 'EDIFICIO ' + $$[$0-1]
+case 15:this.$ = 'NUMERO ' + $$[$0-3] + "\n\t" + 'EDIFICIO ' + $$[$0-1]
 break;
 case 16:this.$ = 'PORTAL ' + $$[$0]
 break;
@@ -119,7 +119,7 @@ case 17:this.$ = 'PORTAL ' + $$[$0]
 break;
 case 18:this.$ = 'CIUDAD: ' + $$[$0-1] + ' ' + $$[$0]
 break;
-case 19:this.$ = '/nCP: ' + $$[$0-5] + '\nLOCALIDAD: ' + $$[$0-4] + ' ' + $$[$0-3] + '\nPROVINCIA: ' + $$[$0-1] + ' ' + $$[$0]
+case 19:this.$ = 'CP: ' + $$[$0-5] + "\n" + 'LOCALIDAD: ' + $$[$0-4] + ' ' + $$[$0-3] + "\n" + 'PROVINCIA: ' + $$[$0-1] + ' ' + $$[$0]
 break;
 }
 },

@@ -44,9 +44,9 @@ init
 
 letter
 	: dest SEPNL dir SEPNL locat SEPNL cp EOF
-		{$$ = $1 + '\n' + $3 + '\n' + $5 + $7}
+		{$$ = $1 + "\n\n" + $3 + "\n\n" + $5 + "\n\n"+ $7}
     | dest SEPNL dir SEPNL cp EOF
-		{$$ = $1 + '\n' + $3 + $5}
+		{$$ = $1 + "\n\n" + $3 + "\n\n" + $5}
 	;
 	
 dest
@@ -62,10 +62,10 @@ words
 	;
 	
 dir
-	: dirstreet SEPDIR dirid SEPDIR block
-		{$$ = 'DIRECCION: ' + '\n' + $1 + '\n' + $3 + '\n' + $5}
+	: dirstreet SEPDIR dirid SEPDIR block 
+		{$$ = 'DIRECCION: ' + "\n\t" + $1 + "\n\t" + $3 + "\n\t" + $5}
     | dirstreet SEPDIR dirid
-		{$$ = 'DIRECCION: ' + '\n' + $1 + '\n' + $3}
+		{$$ = 'DIRECCION: ' + "\n\t" + $1 + "\n\t" + $3}
 	;
 	
 dirstreet
@@ -84,7 +84,7 @@ dirid: EDF WORD words
 	| NUM NUMBER
 		{$$ = 'NUMERO ' + $2}
 	| NUM NUMBER EDF WORD words
-		{$$ = 'NUMERO ' + $2 + '\n' + 'EDIFICIO ' + $4}
+		{$$ = 'NUMERO ' + $2 + "\n\t" + 'EDIFICIO ' + $4}
 	;
 	
 block: PORTAL LETTER
@@ -98,5 +98,5 @@ locat: WORD words
     ;
 
 cp: CP WORD words SEPDIR WORD words
-        {$$ = '/nCP: ' + $1 + '\nLOCALIDAD: ' + $2 + ' ' + $3 + '\nPROVINCIA: ' + $5 + ' ' + $6}
+        {$$ = 'CP: ' + $1 + "\n" + 'LOCALIDAD: ' + $2 + ' ' + $3 + "\n" + 'PROVINCIA: ' + $5 + ' ' + $6}
     ;
