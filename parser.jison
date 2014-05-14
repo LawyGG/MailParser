@@ -12,7 +12,7 @@
 [;]										return 'SEPNL'
 [,]										return 'SEPDIR'
 
-'Calle'|'calle'|'C/'|'c/'		    						return 'CALLE'
+'Calle'|'calle'|'C/'|'c/'	   								return 'CALLE'
 'Vía'|'vía'			  										return 'VIA'
 'Paseo'|'paseo'		  										return 'PASEO'
 'Plaza'|'plaza'|'Plazoleta'|'plazoleta'						return 'PLAZA'
@@ -21,8 +21,11 @@
 'n.'|'nº'|'número'|'Número'|'N.'|'Nº'						return 'NUM'
 'Portal'|'portal'|'Bloque'|'bloque'							return 'PORTAL'
 'Piso'|'piso'|'Planta'|'planta'								return 'PISO'
+'Puerta'|'puerta'											return 'PUERTA'
+'Izquierda'|'Derecha'|'izq'|'dcha'|'izquierda'|'derecha'	return 'PUERTA_W'
 
 [A-Z]\b		  							return 'LETTER'
+
 [A-Za-z]+\b                             return 'WORD'
 [0-9]+\b								return 'NUMBER'
 
@@ -45,73 +48,91 @@ init
 
 letter
 	: dest SEPNL dir SEPNL locat SEPNL cp EOF
-		{$$ = $1 + "\n\n" + $3 + "\n\n" + $5 + "\n\n"+ $7}
+		{$$ = $1 + "\n\n" + $3 + "\n\n" + $5 + "\n\n"+ $7;}
     | dest SEPNL dir SEPNL cp EOF
-		{$$ = $1 + "\n\n" + $3 + "\n\n" + $5}
+		{$$ = $1 + "\n\n" + $3 + "\n\n" + $5;}
 	;
 	
 dest
     :words
-		{$$ = 'DESTINATARIO: ' + $1 }
+		{$$ = 'DESTINATARIO: ' + $1;}
     ;
 	
 words
 	: WORD words
-		{$$ = $1 + ' ' + $2}
+		{$$ = $1 + ' ' + $2;}
 	| /* empty */
 		{$$ = ''}
 	;
 	
 dir
-	: dirstreet SEPDIR dirid SEPDIR dirop
-		{$$ = 'DIRECCION: ' + "\n\t" + $1 + "\n\t" + $3 + $5}
+	: dirstreet SEPDIR dirid dirop
+		{$$ = 'DIRECCION: ' + "\n\t" + $1 + "\n\t" + $3 + $4;}
 	;
 	
 /*estado para controlar las opcionnales del dir*/
 dirop 
-		: block
-			{$$ = "\n\t" + $1}
-		| floor
-			{$$ = "\n\t" + $1}
-		| block SEPDIR floor
-			{$$ = "\n\t" + $1 + "\n\t" + $3}
-		| /* emppty */
-			{$$ = ''}
-		;
+		: SEPDIR block
+			{$$ = "\n\t" + $2;}
+		| SEPDIR floorgen
+			{$$ = "\n\t" + $2;}
+		| SEPDIR block SEPDIR floorgen
+			{$$ = "\n\t" + $2 + "\n\t" + $4;}
+		| /* empty */
+			{$$ = '';}
+	;
+	
 dirstreet
 	: CALLE WORD words
-		{$$ = 'CALLE ' + $2 + ' ' + $3}
+		{$$ = 'CALLE ' + $2 + ' ' + $3;}
 	| VIA WORD words
-		{$$ = 'VIA ' + $2 + ' ' + $3}
+		{$$ = 'VIA ' + $2 + ' ' + $3;}
 	| PASEO WORD words
-		{$$ = 'PASEO ' + $2 + ' ' + $3}
+		{$$ = 'PASEO ' + $2 + ' ' + $3;}
 	| PLAZA WORD words
-		{$$ = 'PLAZA ' + $2 + ' ' + $3}
+		{$$ = 'PLAZA ' + $2 + ' ' + $3;}
 	;
 
 dirid: EDF WORD words
-		{$$ = 'EDIFICIO ' + $2}
+		{$$ = 'EDIFICIO ' + $2;}
+	| EDF LETTER
+		{$$ = 'EDIFICIO ' + $2;}
 	| NUM NUMBER
-		{$$ = 'NUMERO ' + $2}
+		{$$ = 'NUMERO ' + $2;}
 	| NUM NUMBER EDF WORD words
-		{$$ = 'NUMERO ' + $2 + "\n\t" + 'EDIFICIO ' + $4}
+		{$$ = 'NUMERO ' + $2 + "\n\t" + 'EDIFICIO ' + $4 + $5;}
+	| NUM NUMBER EDF LETTER
+		{$$ = 'NUMERO ' + $2 + "\n\t" + 'EDIFICIO ' + $4;}
 	;
 	
 block: PORTAL LETTER
-		{$$ = 'PORTAL ' + $2}
+		{$$ = 'PORTAL ' + $2;}
 	| PORTAL NUMBER
-		{$$ = 'PORTAL ' + $2}
+		{$$ = 'PORTAL ' + $2;}
+	;
+	
+floorgen: floor SEPDIR puerta
+			{$$ = $1 + ' ' + "\n\t" + $3;}
+		| floor
+			{$$ = $1;}
 	;
 	
 floor: PISO NUMBER
-		{$$ = 'PISO: ' + $2}
+		{$$ = 'PISO: ' + $2;}
 	;
 	
+puerta: PUERTA LETTER
+		{$$ = 'PUERTA: ' + $2;}
+	| PUERTA NUMBER
+		{$$ = 'PUERTA: ' + $2;}
+	| PUERTA PUERTA_W
+		{$$ = 'PUERTA: ' + $2;}
+	;
 
 locat: WORD words
-        {$$ = $1 + ' ' + $2}
+        {$$ = 'OPCIONAL: ' + $1 + ' ' + $2;}
     ;
 
 cp: CP WORD words SEPDIR WORD words
-        {$$ = 'CP: ' + $1 + "\n" + 'LOCALIDAD: ' + $2 + ' ' + $3 + "\n" + 'PROVINCIA: ' + $5 + ' ' + $6}
+        {$$ = 'CP: ' + $1 + "\n" + 'LOCALIDAD: ' + $2 + ' ' + $3 + "\n" + 'PROVINCIA: ' + $5 + ' ' + $6;}
     ;
