@@ -20,6 +20,7 @@
 'Edf.'|'Edificio'|'edicifio'|'edf.'							return 'EDF'
 'n.'|'nº'|'número'|'Número'|'N.'|'Nº'						return 'NUM'
 'Portal'|'portal'|'Bloque'|'bloque'							return 'PORTAL'
+'Piso'|'piso'|'Planta'|'planta'								return 'PISO'
 
 [A-Z]\b		  							return 'LETTER'
 [A-Za-z]+\b                             return 'WORD'
@@ -62,12 +63,21 @@ words
 	;
 	
 dir
-	: dirstreet SEPDIR dirid SEPDIR block 
-		{$$ = 'DIRECCION: ' + "\n\t" + $1 + "\n\t" + $3 + "\n\t" + $5}
-    | dirstreet SEPDIR dirid
-		{$$ = 'DIRECCION: ' + "\n\t" + $1 + "\n\t" + $3}
+	: dirstreet SEPDIR dirid SEPDIR dirop
+		{$$ = 'DIRECCION: ' + "\n\t" + $1 + "\n\t" + $3 + $5}
 	;
 	
+/*estado para controlar las opcionnales del dir*/
+dirop 
+		: block
+			{$$ = "\n\t" + $1}
+		| floor
+			{$$ = "\n\t" + $1}
+		| block SEPDIR floor
+			{$$ = "\n\t" + $1 + "\n\t" + $3}
+		| /* emppty */
+			{$$ = ''}
+		;
 dirstreet
 	: CALLE WORD words
 		{$$ = 'CALLE ' + $2 + ' ' + $3}
@@ -92,9 +102,14 @@ block: PORTAL LETTER
 	| PORTAL NUMBER
 		{$$ = 'PORTAL ' + $2}
 	;
+	
+floor: PISO NUMBER
+		{$$ = 'PISO: ' + $2}
+	;
+	
 
 locat: WORD words
-        {$$ = 'CIUDAD: ' + $1 + ' ' + $2}
+        {$$ = $1 + ' ' + $2}
     ;
 
 cp: CP WORD words SEPDIR WORD words
