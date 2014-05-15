@@ -5,6 +5,49 @@ html *
    font-family: Arial;
 }
 
+.button {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #3cad1f), color-stop(1, #66851c) );
+	background:-moz-linear-gradient( center top, #3cad1f 5%, #66851c 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3cad1f', endColorstr='#66851c');
+	background-color:#3cad1f;
+	-webkit-border-top-left-radius:0px;
+	-moz-border-radius-topleft:0px;
+	border-top-left-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	-moz-border-radius-topright:0px;
+	border-top-right-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	-moz-border-radius-bottomright:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	border-bottom-left-radius:0px;
+	text-indent:0;
+	border:1px solid #83b827;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	font-style:normal;
+	height:40px;
+	line-height:40px;
+	width:100px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #135c05;
+}
+.button:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #66851c), color-stop(1, #3cad1f) );
+	background:-moz-linear-gradient( center top, #66851c 5%, #3cad1f 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#66851c', endColorstr='#3cad1f');
+	background-color:#66851c;
+}.button:active {
+	position:relative;
+	top:1px;
+}
+/* This button was generated using CSSButtonGenerator.com */
+
 
 
 .thumb {
@@ -13,33 +56,57 @@ html *
     margin: 10px 5px 0 0;
   }
 
-h1            { text-align: center; font-size: x-large; }
+h1            { text-align: center; font-size: 35px; color:#FFFFFF;
+			text-shadow: 1px 2px 3px #666;
+}
+
 th, td        { vertical-align: top; text-align: left; }   
 /* #finaltable  * { color: white; background-color: black; }   */
 
 /* #finaltable table { border-collapse:collapse; } */
 /* #finaltable table, td { border:1px solid white; } */
-#finaltable:hover td { background-color: blue; } 
-tr:nth-child(odd)    { background-color:#eee; }
-tr:nth-child(even)    { background-color:#00FF66; }
-input        { text-align: left;  border: none;       }     /* Align input to the right  */
-ul  { background-color: white; }
-textarea     { border: inset; border-color: white;       }                        
-table        { border: inset; border-color: white; }
-.hidden      { display: none; }
-.unhidden    { display: block; }
-table.center { margin-left:auto; margin-right:auto; }
-#result      { border-color: red; }
-tr.error       { background-color: red; }
-pre.output   { background-color: white; }
-span.repeated { background-color: red }
-span.header { background-color: blue }
-span.comments { background-color: orange }
-span.blanks { background-color: green }
-span.nameEqualValue { background-color: cyan }
-span.error { background-color: red }
+#navcontainer ul
+{
+margin: 0;
+padding: 0;
+list-style-type: none;
+text-align: center;
+}
+
+#navcontainer ul li { display: inline; }
+
+#navcontainer ul li a
+{
+text-decoration: none;
+padding: .2em 1em;
+color: #fff;
+background-color: #996600;
+}
+
+#navcontainer ul li a:hover
+{
+color: #fff;
+background-color: #CC6600;
+}
+
+
+nav {
+    text-align: left;
+}
+
+nav li {
+    list-style: none;
+    display: inline;
+    margin: 0 left;
+}
+
 
 body
 {
-    background-image:url("fondo.png");
+	text-align: center;
+
+	background: url(fondo.png) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
 }
