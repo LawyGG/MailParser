@@ -97,12 +97,19 @@ dirid: EDF WORD words
 		{$$ = 'EDIFICIO ' + $2;}
 	| EDF LETTER
 		{$$ = 'EDIFICIO ' + $2;}
-	| NUM NUMBER
-		{$$ = 'NUMERO ' + $2;}
-	| NUM NUMBER EDF WORD words
-		{$$ = 'NUMERO ' + $2 + "\n\t" + 'EDIFICIO ' + $4 + $5;}
-	| NUM NUMBER EDF LETTER
-		{$$ = 'NUMERO ' + $2 + "\n\t" + 'EDIFICIO ' + $4;}
+	| num
+		{$$ = $1;}
+	| num EDF WORD words
+		{$$ = $1 + "\n\t" + 'EDIFICIO ' + + $3 + $4;}
+	| num EDF LETTER
+		{$$ = $1 + "\n\t" + 'EDIFICIO ' + $3;}
+	;
+	
+	
+num : NUM NUMBER
+		{$$ = 'NUMERO: ' + $2}
+	| NUM NUMBER LETTER
+		{$$ = 'NUMERO: ' + $2 + $3}
 	;
 	
 block: PORTAL LETTER
