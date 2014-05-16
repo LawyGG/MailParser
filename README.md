@@ -4,6 +4,8 @@ MailParser
 This repo will developt a parser for ordinary mail.
 Directions will be expressed in Spanish format (see details below).
 
+See the webat: [this link](http://alu0100698244.github.io/MailParser/index.html)
+
 ##Spanish Direction Format
 
 Optional fields indicates with *
